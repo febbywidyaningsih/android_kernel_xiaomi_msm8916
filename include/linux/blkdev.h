@@ -80,7 +80,7 @@ enum rq_cmd_type_bits {
 	/*
 	 * for ATA/ATAPI devices. this really doesn't belong here, ide should
 	 * use REQ_TYPE_SPECIAL and use rq->cmd[0] with the range of driver
-	 * private REQ_LB opcodes to differentiate what type of request this is
+	 * private REQ_LB opcodes to differentiateQUEUE_FLAG_ADD_RANDOM) what type of request this is
 	 */
 	REQ_TYPE_ATA_TASKFILE,
 	REQ_TYPE_ATA_PC,
@@ -475,7 +475,7 @@ struct request_queue {
 #define QUEUE_FLAG_DEFAULT	((1 << QUEUE_FLAG_IO_STAT) |		\
 				 (1 << QUEUE_FLAG_STACKABLE)	|	\
 				 (1 << QUEUE_FLAG_SAME_COMP)	|	\
-				 (1 << QUEUE_FLAG_ADD_RANDOM))
+				 (0 << QUEUE_FLAG_ADD_RANDOM))
 
 static inline void queue_lockdep_assert_held(struct request_queue *q)
 {
